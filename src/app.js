@@ -8,19 +8,6 @@ const moviesRouter = require('./movies/movies.router');
 const theatersRouter = require('./theaters/theaters.router');
 const reviewsRouter = require("./reviews/reviews.router");
 
-const router = express.Router();
-const PORT = process.env.PORT || 5001;
-
-router.get('/', cors(), (req, res) => {
-  res.json({ message: 'Hello Render!' });
-});
-
-app.use('/', router);
-
-app.listen(PORT, () => {
-  console.log(`Server running on ${PORT} `);
-});
-
 app.use(express.json())
 app.use(cors());
 app.use("/movies", moviesRouter)
