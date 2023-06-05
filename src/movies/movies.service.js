@@ -2,7 +2,7 @@ const knex = require("../db/connection");
 const asyncErrorBoundary = require("../errors/asyncErrorBoundary");
 
 function list(isShowing) {
-  if (isShowing="true") {
+  if ((isShowing = "true")) {
     return knex("movies")
       .join("movies_theaters", "movies.movie_id", "movies_theaters.movie_id")
       .distinct("movies_theaters.movie_id")

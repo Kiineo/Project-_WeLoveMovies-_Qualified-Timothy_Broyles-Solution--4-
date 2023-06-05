@@ -8,13 +8,21 @@ const methodNotAllowed = require("../errors/methodNotAllowed");
 
 const cors = require("cors");
 
-moviesRouter.use(cors())
+moviesRouter.use(cors());
 
 moviesRouter.route("/").get(controller.list).all(methodNotAllowed);
 
 moviesRouter.route("/:movieId").get(controller.read).all(methodNotAllowed);
 
-moviesRouter.use("/:movieId/theaters", controller.validateMovieExists, theatersRouter);
-moviesRouter.use("/:movieId/reviews", controller.validateMovieExists, reviewsRouter);
+moviesRouter.use(
+  "/:movieId/theaters",
+  controller.validateMovieExists,
+  theatersRouter
+);
+moviesRouter.use(
+  "/:movieId/reviews",
+  controller.validateMovieExists,
+  reviewsRouter
+);
 
 module.exports = moviesRouter;
